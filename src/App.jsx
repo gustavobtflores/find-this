@@ -5,12 +5,12 @@ import theme from './theme';
 import Home from './pages/Home';
 
 function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <Reset />
-      <Home />
-    </ThemeProvider>
-  );
+	return (
+		<ThemeProvider theme={theme}>
+			<Reset />
+			<Home />
+		</ThemeProvider>
+	);
 }
 
 export default App;

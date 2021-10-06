@@ -1,13 +1,17 @@
-const theme = {
-  colors: {
-    primary: '#6200ee',
-    background: '#00000014',
-    text: '#00000083',
-    success: '#135E01',
-  },
-  fonts: {
-    regular: 'Roboto, sans-serif',
-  },
-};
+import { createTheme } from '@material-ui/core/styles';
+
+const theme = createTheme({
+	palette: {
+		primary: {
+			main: '#6200ee',
+		},
+		secondary: {
+			main: '#ffffff',
+		},
+	},
+	font: {
+		regular: 'Roboto',
+	},
+});
 
 export default theme;
