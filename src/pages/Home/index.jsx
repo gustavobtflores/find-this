@@ -13,10 +13,11 @@ import {
 } from "./styles";
 import logo from "../../assets/logo.svg";
 import restaurant from "../../assets/restaurante-fake.png";
-import { Card, RestaurantCard } from "../../components";
+import { Card, RestaurantCard, Modal } from "../../components";
 
 const Home = () => {
   const [inputValue, setInputValue] = useState("");
+  const [modalOpened, setModalOpened] = useState(false);
 
   return (
     <Wrapper>
@@ -61,6 +62,7 @@ const Home = () => {
         <RestaurantCard />
       </Container>
       <Map />
+      <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)} />
     </Wrapper>
   );
 };

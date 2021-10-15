@@ -9,6 +9,7 @@ export const Container = styled.aside`
   width: 360px;
   height: 100vh;
   overflow-y: auto;
+  background-color: ${(props) => props.theme.palette.background};
 `;
 
 export const Search = styled.section`
