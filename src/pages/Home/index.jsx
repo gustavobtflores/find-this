@@ -7,13 +7,12 @@ import {
   Logo,
   Search,
   Wrapper,
-  Map,
   Carousel,
   CarouselTitle,
 } from "./styles";
 import logo from "../../assets/logo.svg";
 import restaurant from "../../assets/restaurante-fake.png";
-import { Card, RestaurantCard, Modal } from "../../components";
+import { Card, RestaurantCard, Modal, Map } from "../../components";
 
 const Home = () => {
   const [inputValue, setInputValue] = useState("");
