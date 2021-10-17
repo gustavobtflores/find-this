@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import { TextField, IconButton } from "@material-ui/core";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchIcon from "@material-ui/icons/Search";
@@ -11,12 +12,20 @@ import {
   CarouselTitle,
 } from "./styles";
 import logo from "../../assets/logo.svg";
-import restaurant from "../../assets/restaurante-fake.png";
+import restaurante from "../../assets/restaurante-fake.png";
 import { Card, RestaurantCard, Modal, Map } from "../../components";
 
 const Home = () => {
   const [inputValue, setInputValue] = useState("");
+  const [query, setQuery] = useState(null);
   const [modalOpened, setModalOpened] = useState(false);
+  const { restaurants } = useSelector((state) => state.restaurants);
+
+  function handleKeyPress(e) {
+    if (e.key === "Enter") {
+      setQuery(inputValue);
+    }
+  }
 
   return (
     <Wrapper>
@@ -32,6 +41,7 @@ const Home = () => {
             variant="outlined"
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
+            onKeyPress={handleKeyPress}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -50,17 +60,24 @@ const Home = () => {
             slidesToScroll={4}
             adaptiveHeight
           >
-            <Card photo={restaurant} />
-            <Card photo={restaurant} title="melhor restaurante da cidade" />
-            <Card photo={restaurant} />
-            <Card photo={restaurant} />
-            <Card photo={restaurant} />
-            <Card photo={restaurant} />
+            {restaurants.map((restaurant) => (
+              <Card
+                photo={
+                  restaurant.photos
+                    ? restaurant.photos[0].getUrl()
+                    : restaurante
+                }
+                title={restaurant.name}
+                key={restaurant.place_id}
+              />
+            ))}
           </Carousel>
         </Search>
-        <RestaurantCard />
+        {restaurants.map((restaurant) => (
+          <RestaurantCard restaurant={restaurant} />
+        ))}
       </Container>
-      <Map />
+      <Map query={query} />
       <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)} />
     </Wrapper>
   );
