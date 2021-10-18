@@ -23,6 +23,9 @@
     "import/prefer-default-export": "off",
     "no-unused-expressions": ["error", { "allowTaggedTemplates": true }],
     "no-shadow": "off",
-    "no-unused-vars": "off"
+    "no-unused-vars": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-use-before-define": "off",
+    "react/prop-types": "off"
   }
 }

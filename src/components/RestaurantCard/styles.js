@@ -17,6 +17,7 @@ export const Restaurant = styled.div`
 export const RestaurantInfo = styled.div`
   display: flex;
   flex-direction: column;
+  width: 200px;
 `;
 
 export const Title = styled.span`
@@ -31,12 +32,13 @@ export const Title = styled.span`
 export const Address = styled.span`
   font-family: ${(props) => props.theme.font.regular};
   color: ${(props) => props.theme.palette.text};
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 1.25em;
   margin-bottom: 10px;
 `;
 
 export const RestaurantPhoto = styled.img`
+  display: ${(props) => (props.imageLoaded ? "block" : "none")};
   width: 100px;
   height: 100px;
   object-fit: cover;
